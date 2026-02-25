@@ -1,0 +1,87 @@
+---
+import SkillsModal from "./SkillsModal.astro";
+import ProjectsModal from "./ProjectsModal.astro";
+import ContactModal from "./ContactModal.astro";
+import ExperienceModal from "./ExperienceModal.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<div
+  class="main flex font-bold w-full h-screen justify-center items-center flex-col gap-4"
+>
+  <div class="w-36 h-36 rounded-full overflow-hidden border border-gray-600">
+    <img src="" alt="" />
+  </div>
+  <h1 class="text-2xl font-medium">Richard Banguiz</h1>
+  <p class="text-md font-thin">Full Stack Developer & Coding Instructor</p>
+  <p class="text-sm font-thin w-1/3 text-center">
+    5+ years of expertise in architecting dependable web ecosystems. I bridge
+    the gap between complex infrastructure and practical, maintainable software
+    design.
+  </p>
+  <ul class="w-1/4 flex gap-5 justify-center text-md font-thin">
+    <li class="hover:text-white duration-75 text-gray-200 hover:scale-105">
+      <a href='http://github.com/urkiddennn"'>Github</a>
+    </li>
+    <li class="hover:text-white duration-75 text-gray-200 hover:scale-105">
+      <a href="">Linkend</a>
+    </li>
+    <li class="hover:text-white duration-75 text-gray-200 hover:scale-105">
+      <a href="https://x.com/Urkidden2">X</a>
+    </li>
+    <li class="hover:text-white duration-75 text-gray-200 hover:scale-105">
+      <button id="experience-trigger" class="cursor-pointer">Experience</button>
+    </li>
+    <li class="hover:text-white duration-75 text-gray-200 hover:scale-105">
+      <button id="skills-trigger" class="cursor-pointer">Skills</button>
+    </li>
+    <li class="hover:text-white duration-75 text-gray-200 hover:scale-105">
+      <button id="contact-trigger" class="cursor-pointer">Contact</button>
+    </li>
+    <li class="hover:text-white duration-75 text-gray-200 hover:scale-105">
+      <button id="projects-trigger" class="cursor-pointer">Projects</button>
+    </li>
+  </ul>
+  <SkillsModal />
+  <ProjectsModal />
+  <ContactModal />
+  <ExperienceModal />
+  <Footer />
+</div>
+
+<script>
+  const skillsTrigger = document.getElementById("skills-trigger");
+  const contactTrigger = document.getElementById("contact-trigger");
+  const projectsTrigger = document.getElementById("projects-trigger");
+  const experienceTrigger = document.getElementById("experience-trigger");
+  const skillsModal = document.getElementById(
+    "skills-modal",
+  ) as HTMLDialogElement;
+  const projectsModal = document.getElementById(
+    "projects-modal",
+  ) as HTMLDialogElement;
+
+  const contactModal = document.getElementById(
+    "contact-modal",
+  ) as HTMLDialogElement;
+
+  const experienceModal = document.getElementById(
+    "experience-modal",
+  ) as HTMLDialogElement;
+
+  skillsTrigger?.addEventListener("click", () => {
+    skillsModal?.showModal();
+  });
+
+  contactTrigger?.addEventListener("click", () => {
+    contactModal?.showModal();
+  });
+
+  projectsTrigger?.addEventListener("click", () => {
+    projectsModal?.showModal();
+  });
+
+  experienceTrigger?.addEventListener("click", () => {
+    experienceModal?.showModal();
+  });
+</script>

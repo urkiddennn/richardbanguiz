@@ -1,0 +1,32 @@
+---
+import "../styles/global.css";
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>Richard Banguiz</title>
+  </head>
+  <body class="w-full min-h-screen bg-black text-white">
+    <slot />
+  </body>
+</html>
+
+<style>
+  body {
+    font-family: "Geist Mono", monospace;
+    font-optical-sizing: auto;
+  }
+</style>

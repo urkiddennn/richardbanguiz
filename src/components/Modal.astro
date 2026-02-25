@@ -1,0 +1,112 @@
+---
+interface Props {
+    id: string;
+    title: string;
+}
+
+const { id, title } = Astro.props;
+---
+
+<dialog
+    id={id}
+    class="fixed inset-0 z-50 m-auto h-fit w-[90%] max-w-4xl overflow-visible rounded-2xl border border-white/10 bg-[#121212] p-8 text-white shadow-2xl backdrop:bg-black/80 backdrop:backdrop-blur-sm"
+>
+    <div class="flex flex-col gap-6">
+        <div class="flex items-center justify-between">
+            <h2 class="text-2xl font-semibold tracking-tight">{title}</h2>
+            <form method="dialog">
+                <button
+                    class="group flex h-8 w-8 items-center justify-center rounded-lg transition-colors hover:bg-white/10"
+                    aria-label="Close"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="text-gray-400 transition-colors group-hover:text-white"
+                    >
+                        <path d="M18 6L6 18"></path>
+                        <path d="M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </form>
+        </div>
+
+        <div class="modal-content">
+            <slot />
+        </div>
+
+        <div class="flex justify-center pt-4">
+            <p class="text-sm font-light text-gray-500">
+                Press <kbd
+                    class="rounded border border-white/20 bg-white/5 px-1.5 py-0.5 font-sans text-xs text-gray-300"
+                    >ESC</kbd
+                > or click outside to close
+            </p>
+        </div>
+    </div>
+</dialog>
+
+<script is:inline define:vars={{ id }}>
+    const dialog = document.getElementById(id);
+
+    if (dialog) {
+        dialog.addEventListener("click", (e) => {
+            const rect = dialog.getBoundingClientRect();
+            const isInDialog =
+                rect.top <= e.clientY &&
+                e.clientY <= rect.top + rect.height &&
+                rect.left <= e.clientX &&
+                e.clientX <= rect.left + rect.width;
+            if (!isInDialog) {
+                dialog.close();
+            }
+        });
+    }
+</script>
+
+<style>
+    dialog {
+        opacity: 0;
+        transform: scale(0.95);
+        transition:
+            opacity 0.2s ease-out,
+            transform 0.2s ease-out,
+            display 0.2s ease-out allow-discrete;
+    }
+
+    dialog[open] {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    @starting-style {
+        dialog[open] {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+    }
+
+    dialog::backdrop {
+        opacity: 0;
+        transition:
+            opacity 0.2s ease-out,
+            display 0.2s ease-out allow-discrete;
+    }
+
+    dialog[open]::backdrop {
+        opacity: 1;
+    }
+
+    @starting-style {
+        dialog[open]::backdrop {
+            opacity: 0;
+        }
+    }
+</style>
