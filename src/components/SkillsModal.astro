@@ -20,7 +20,7 @@ const skillCategories = [
   },
   {
     title: "DevOps",
-    skills: ["Docker", "Ubuntu", "Github", "Vercel", "Netlify"],
+    skills: ["Docker", "Ubuntu", "Github", "Vercel", "Dokploy", "Cloudflare"],
   },
   {
     title: "Tools",
@@ -33,14 +33,14 @@ const skillCategories = [
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     {
       skillCategories.map((category) => (
-        <div class="rounded-xl border border-white/5 bg-white/[0.02] p-6 transition-colors hover:border-white/10 hover:bg-white/[0.04]">
-          <h3 class="mb-4 text-center text-sm font-semibold uppercase tracking-wider text-gray-400">
+        <div class="rounded-xl border border-gray-100 dark:border-white/5 bg-gray-50 dark:bg-white/2 p-6 transition-colors hover:border-gray-200 dark:hover:border-white/10 hover:bg-gray-100 dark:hover:bg-white/4">
+          <h3 class="mb-4 text-center text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
             {category.title}
           </h3>
           <ul class="space-y-2">
             {category.skills.map((skill) => (
-              <li class="flex font-thin items-center gap-2 text-sm text-gray-300">
-                <span class="h-1 w-1 rounded-full bg-gray-200" />
+              <li class="flex font-thin items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                <span class="h-1 w-1 rounded-full bg-gray-400 dark:bg-gray-200" />
                 {skill}
               </li>
             ))}

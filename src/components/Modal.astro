@@ -9,14 +9,14 @@ const { id, title } = Astro.props;
 
 <dialog
     id={id}
-    class="fixed inset-0 z-50 m-auto h-fit w-[90%] max-w-4xl overflow-visible rounded-2xl border border-white/10 bg-[#121212] p-8 text-white shadow-2xl backdrop:bg-black/80 backdrop:backdrop-blur-sm"
+    class="fixed inset-0 z-50 m-auto h-fit max-h-[90dvh] w-[95%] md:w-[90%] max-w-4xl overflow-y-auto rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-zinc-950 p-6 md:p-10 text-black dark:text-white shadow-2xl backdrop:bg-zinc-900/50 dark:backdrop:bg-black/80 backdrop:backdrop-blur-sm"
 >
     <div class="flex flex-col gap-6">
         <div class="flex items-center justify-between">
             <h2 class="text-2xl font-semibold tracking-tight">{title}</h2>
             <form method="dialog">
                 <button
-                    class="group flex h-8 w-8 items-center justify-center rounded-lg transition-colors hover:bg-white/10"
+                    class="group flex h-8 w-8 items-center justify-center rounded-lg transition-colors hover:bg-black/5 dark:hover:bg-white/10"
                     aria-label="Close"
                 >
                     <svg
@@ -29,7 +29,7 @@ const { id, title } = Astro.props;
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        class="text-gray-400 transition-colors group-hover:text-white"
+                        class="text-gray-500 dark:text-gray-400 transition-colors group-hover:text-black dark:group-hover:text-white"
                     >
                         <path d="M18 6L6 18"></path>
                         <path d="M6 6l12 12"></path>
@@ -45,7 +45,7 @@ const { id, title } = Astro.props;
         <div class="flex justify-center pt-4">
             <p class="text-sm font-light text-gray-500">
                 Press <kbd
-                    class="rounded border border-white/20 bg-white/5 px-1.5 py-0.5 font-sans text-xs text-gray-300"
+                    class="rounded border border-gray-300 dark:border-white/20 bg-gray-100 dark:bg-white/5 px-1.5 py-0.5 font-sans text-xs text-gray-600 dark:text-gray-300"
                     >ESC</kbd
                 > or click outside to close
             </p>
